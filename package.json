@@ -1,0 +1,14 @@
+{
+  "name": "build-week-2",
+  "version": "1.0.0",
+  "description": "spotify clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maria Tavino, Gianluca Quaranta, Lorenzo Pezzica, Marco Petruzzella, Celine Emanuele, Trixia Lorenzana",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.69.5"
+  }
+}
