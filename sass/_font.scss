@@ -1,0 +1,55 @@
+$font-bold: (
+    font-family: 'CircularStd',
+    src: url("../assets/fonts/CircularStd-Bold.otf") format("opentype"),
+);
+$font-bolditalic:(
+    font-family: 'CircularStd',
+    src: url("../assets/fonts/CircularStd-BlackItalic.otf") format("opentype"),
+);
+$font-black:(
+    font-family: 'CircularStd',
+    src:  url("../assets/fonts/CircularStd-Black.otf") format("opentype"),
+);
+$font-blackitalic:(
+    font-family: 'CircularStd',
+    src: url("../assets/fonts/CircularStd-BlackItalic.otf") format("opentype"),
+);
+$font-book:(
+    font-family: 'CircularStd',
+    src: url("../assets/fonts/CircularStd-Book.otf") format("opentype"),
+);
+$font-bookitalic:(
+    font-family: 'CircularStd',
+    src:url("../assets/fonts/CircularStd-BookItalic.otf") format("opentype"),
+);
+$font-light:(
+    font-family: 'CircularStd',
+    src:url("../assets/fonts/CircularStd-Light.otf") format("opentype"),
+);
+$font-lightitalic:(
+    font-family: 'CircularStd',
+    src:url("../assets/fonts/CircularStd-LightItalic.otf") format("opentype"),
+);
+$font-medium:(
+    font-family: 'CircularStd',
+    src:url("../assets/fonts/CircularStd-Medium.otf") format("opentype"),
+);
+$font-mediumitalic:(
+    font-family: 'CircularStd',
+    src:url("../assets/fonts/CircularStd-MediumItalic.otf") format("opentype")
+);
+
+@font-face {
+    font-family: CircularStd;
+    src: url("../assets/fonts/CircularStd-Bold.otf") format("opentype"),
+         url("../assets/fonts/CircularStd-Black.otf") format("opentype"),
+         url("../assets/fonts/CircularStd-BlackItalic.otf") format("opentype"),
+         url("../assets/fonts/CircularStd-BoldItalic.otf") format("opentype"),
+         url("../assets/fonts/CircularStd-Book.otf") format("opentype"),
+         url("../assets/fonts/CircularStd-BookItalic.otf") format("opentype"),
+         url("../assets/fonts/CircularStd-Light.otf") format("opentype"),
+         url("../assets/fonts/CircularStd-LightItalic.otf") format("opentype"),
+         url("../assets/fonts/CircularStd-Medium.otf") format("opentype"),
+         url("../assets/fonts/CircularStd-MediumItalic.otf") format("opentype");
+    }
+

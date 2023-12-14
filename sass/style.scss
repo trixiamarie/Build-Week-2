@@ -1,5 +1,142 @@
+@import '_font.scss';
+@import '_colors.scss';
+
 svg{
-    fill: #b3b3b3;
+    fill: $text2;
     width: auto;
     height: 1.5rem;
 }
+
+body{
+    font-family: map-get($font-bold, font-family);
+}
+.dots{
+    color:$text2;
+    font-size: 2rem;
+}
+#nav1{
+    background-color: #121212;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    button{
+        font-family: map-get($font-bold, font-family);
+        border: none;
+        border-radius: 0.1rem;
+        background-color:transparent;
+        color: $text;
+        width: 2rem;
+        height: 2rem;
+        padding: 0rem;
+    }
+    p{
+        color: $text2;
+    }
+}
+#nav2{
+    :hover{
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+          }
+    }
+    background-color: #121212;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    .libreria{
+        font-family: map-get($font-bold, font-family);
+        border: none;
+        border-radius: 0.1rem;
+        background-color:transparent;
+        color: $text;
+        width: 2rem;
+        height: 2rem;
+        padding: 0rem;
+    }
+    button{
+        background-color: #232323;
+        color: $text2;
+        border: transparent;
+        border-radius: 1rem;
+        padding: 0.3rem 1rem;
+        margin-right: 0.5rem;
+    }
+    .piacciono{
+        padding: 0;
+        font-family: map-get($font-bold, font-family);
+        border: none;
+        border-radius: 0.1rem;
+        background: rgb(55,36,134);
+background: linear-gradient(128deg, rgba(55,36,134,1) 17%, rgba(135,148,158,1) 100%);
+        color:$text;
+        width: 2rem;
+        height: 2rem;
+        i{
+            color: $text2;
+        }
+    }
+
+    p{
+        color: $text2;
+    }
+}
+.bg-container {
+    height: 5.5rem;
+    background-color: $text;
+  }
+  
+  .playerControls .row {
+    justify-content: space-between;
+  }
+  
+  .playerControls a img {
+    width: 14px;
+    margin-top: 1rem;
+    filter: brightness(60%);
+  }
+  
+  .playerControls a:hover {
+    filter: brightness(80%);
+    color: $text !important;
+  }
+  
+  .progress {
+    color: white;
+    background-color: #414141;
+    height: 3px;
+  }
+  
+  .playBar p {
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  #listsongs{
+    padding: 1rem 0rem 0rem 1rem;
+    height: 100vh;
+    a{
+        text-decoration: none;
+        color: $text2;
+        :hover{
+            background-color: darken($text2, 50%);
+        }
+    }
+  }
+
+  /* width */
+::-webkit-scrollbar {
+    width: 1rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:transparent ;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
