@@ -1,6 +1,10 @@
 @import '_font.scss';
 @import '_colors.scss';
 
+*{
+  box-sizing: border-box;
+}
+
 svg{
     fill: $text2;
     width: auto;
@@ -9,13 +13,32 @@ svg{
 
 body{
     font-family: map-get($font-bold, font-family);
+    background-color: $black;
+}
+#dots{
+  position: absolute;
+  z-index: 2;
+  width: 100vw;
+  background-color: $black;
 }
 .dots{
     color:$text2;
     font-size: 2rem;
 }
+#navbarhomepage{
+  background: none;
+  .btnb{
+    background-color: #0e0e0e;
+  }
+}
+.navbar{
+    margin-top: 2rem;
+    background: rgb(0,0,0);
+background: linear-gradient(180deg, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 100%);
+}
 #nav1{
-    background-color: #121212;
+  margin-top: 3rem;
+    background-color: $navbg;
     border-radius: 0.5rem;
     padding: 1rem;
     button{
@@ -38,7 +61,7 @@ body{
             background: #888; 
           }
     }
-    background-color: #121212;
+    background-color: $navbg;
     border-radius: 0.5rem;
     padding: 1rem;
     .libreria{
@@ -99,19 +122,19 @@ background: linear-gradient(128deg, rgba(55,36,134,1) 17%, rgba(135,148,158,1) 1
   }
   
   .progress {
-    color: white;
+    color: $white;
     background-color: #414141;
     height: 3px;
   }
   
   .playBar p {
     margin-bottom: 20px;
-    color: white;
+    color: $white;
   }
 
   #listsongs{
     padding: 1rem 0rem 0rem 1rem;
-    height: 100vh;
+    height: 70vh;
     a{
         text-decoration: none;
         color: $text2;
@@ -120,7 +143,8 @@ background: linear-gradient(128deg, rgba(55,36,134,1) 17%, rgba(135,148,158,1) 1
         }
     }
   }
-
+  
+//SCROLLBAR
   /* width */
 ::-webkit-scrollbar {
     width: 1rem;
@@ -141,11 +165,226 @@ background: linear-gradient(128deg, rgba(55,36,134,1) 17%, rgba(135,148,158,1) 1
     background: #555; 
   }
 
+//HOMEPAGE
+#sponsored{
+  width: 95%;
+  margin-top: 1em;
+  background: rgb(0,0,0);
+  background: linear-gradient(7deg, rgba(0,0,0,1) 40%, rgba(35,35,35,1) 80%);
+}
+
+#homepagecontent{
+  height: 100vh;
+}
+
+
+#sidebar{
+  margin-top: 3em;
+  overscroll-behavior: contain;
+  position: fixed;
+}
+// #centro{
+//   margin-left: 26%;
+//   margin-top: 3em;
+  
+// }
+
+#friends{
+  margin-top: 3em;
+  font-size: smaller;
+  background-color: $navbg;
+}
+.btn-spotify{
+  background-color: $greenspotify;
+}
+
+
+
+
   //album page
+  // #albumsection{
+  //   // #internsection{
+      
+  //   // }
+    
+  // }
+  #internsection{
+    height: 100vh;
+  }
   #albumcontainer{
+    background-size: cover;
+    background-repeat: no-repeat ;
     background-color: #121212;
+    
     border-radius: 0.5rem;
     padding: 1rem;
+    #imgalbumcontainer{
+      img{
+        width: 15rem;
+        border-radius: 0.5rem;
+        box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.417);
+      }
+      margin-top: 2rem;
+    }
+    #albumtitleanddescription{
+      margin: 2rem 0rem 0rem 1rem;
+      color:white;
+      p{
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        width: fit-content;
+        background: rgb(0, 0, 0);
+background: linear-gradient(128deg, rgba(0,0,0,0.6012780112044818) 17%, rgba(0, 0, 0, 0.35) 100%);
+      }
+      h2{
+        font-size: 3rem;
+        font-family: map-get($font-bold, font-family);
+        width: auto;
+        padding: 1rem;
+        border-radius: 2rem;
+        background: rgb(0,0,0);
+background: linear-gradient(128deg, rgba(0,0,0,0.6012780112044818) 17%, rgba(0,0,0,0.5956757703081232) 100%);
+
+      }
+      h5{
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        width: fit-content;
+        background: rgb(0,0,0);
+background: linear-gradient(128deg, rgba(0,0,0,0.6012780112044818) 17%, rgba(0,0,0,0.5956757703081232) 100%);
+      }
+    }
+  }
+  #playeralbum{
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: darken($text, 10%);
+    svg{
+      fill: black;
+      background-color:#1ed764;
+      border-radius: 50%;
+      height: 4rem;
+      padding: 1rem;
+    }
+    i{
+      padding: 1rem;
+      font-size: 2rem;
+      color: $text2;
+      }
+      i.bi.bi-heart-fill{
+        &:hover{
+         color:#1ed764;
+        } 
+    }
+  }
+  #contentalbum{
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: darken($text, 10%);
+    .row{
+      p{
+        margin:0rem;
+      }
+      &:hover{
+        background-color: $text;
+      }
+    }
+    .col-10{
+      p{
+      padding: 0rem;
+      margin: 0rem;
+    }
+    }
+    color: #828282;
+  }
+
+//SIDEBAR
+#sidebarcontent{
+  padding: 1rem;
+  background-color: #121212;
+  color: $text2;
+  border-radius: 0.5rem;
+  .d-flex{
+    i{
+      background-color: #333333;
+    }
+    p.rounded-4{
+    background-color: #333333;
+    color: #333333;
+  }
+  }
+  
+  .bi.bi-person-fill{
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;;
+    background-color: #414141;
+    border-radius: 50%;
+  }
+  .bi.bi-filter-left{
+    font-size: 6rem;
+     height: min-content;
+  }
+  .text-center {
+    height: 100vh;
+    button{
+    background-color: white;
+    color: $text;
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+  }}
+  button{
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: none;
+    color: $text2;
+  }
+}
+  #sidebar2 {
+    height: 100vh;
+    background-color: black;
+    transition: width 0.3s ease;
+  }
+  
+  .hidden {
+    visibility: hidden;
+    display: none;
+  }
+  
+  button {
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+    color: black;
+  }
+  
+  #closeBtn {
+  
+    cursor: pointer;
+    width: min-content;
   }
 
 
+//marco
+  .maincolumn{
+    
+    background: rgb(34,34,34);
+    background: linear-gradient(0deg, rgba(34,34,34,1) 0%, rgba(18,18,18,1) 42%);
+    .mostratutto{font-size: 0.7em;}
+    .maincard{
+      background-color: #171717;
+      padding: 0.75rem;
+      .song-title{
+        font-size: 0.9em;
+      }
+      .artist-title{
+        font-size: 0.7em;
+      }
+      }
+      }

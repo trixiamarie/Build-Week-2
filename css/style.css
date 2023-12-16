@@ -2,6 +2,10 @@
   font-family: CircularStd;
   src: url("../assets/fonts/CircularStd-Bold.otf") format("opentype"), url("../assets/fonts/CircularStd-Black.otf") format("opentype"), url("../assets/fonts/CircularStd-BlackItalic.otf") format("opentype"), url("../assets/fonts/CircularStd-BoldItalic.otf") format("opentype"), url("../assets/fonts/CircularStd-Book.otf") format("opentype"), url("../assets/fonts/CircularStd-BookItalic.otf") format("opentype"), url("../assets/fonts/CircularStd-Light.otf") format("opentype"), url("../assets/fonts/CircularStd-LightItalic.otf") format("opentype"), url("../assets/fonts/CircularStd-Medium.otf") format("opentype"), url("../assets/fonts/CircularStd-MediumItalic.otf") format("opentype");
 }
+* {
+  box-sizing: border-box;
+}
+
 svg {
   fill: #b3b3b3;
   width: auto;
@@ -10,6 +14,14 @@ svg {
 
 body {
   font-family: "CircularStd";
+  background-color: black;
+}
+
+#dots {
+  position: absolute;
+  z-index: 2;
+  width: 100vw;
+  background-color: black;
 }
 
 .dots {
@@ -17,7 +29,21 @@ body {
   font-size: 2rem;
 }
 
+#navbarhomepage {
+  background: none;
+}
+#navbarhomepage .btnb {
+  background-color: #0e0e0e;
+}
+
+.navbar {
+  margin-top: 2rem;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgb(0, 0, 0) 32%, rgba(0, 0, 0, 0) 100%);
+}
+
 #nav1 {
+  margin-top: 3rem;
   background-color: #121212;
   border-radius: 0.5rem;
   padding: 1rem;
@@ -113,7 +139,7 @@ body {
 
 #listsongs {
   padding: 1rem 0rem 0rem 1rem;
-  height: 100vh;
+  height: 70vh;
 }
 #listsongs a {
   text-decoration: none;
@@ -141,4 +167,203 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+#sponsored {
+  width: 95%;
+  margin-top: 1em;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(7deg, rgb(0, 0, 0) 40%, rgb(35, 35, 35) 80%);
+}
+
+#homepagecontent {
+  height: 100vh;
+}
+
+#sidebar {
+  margin-top: 3em;
+  overscroll-behavior: contain;
+  position: fixed;
+}
+
+#friends {
+  margin-top: 3em;
+  font-size: smaller;
+  background-color: #121212;
+}
+
+.btn-spotify {
+  background-color: #1ED760;
+}
+
+#internsection {
+  height: 100vh;
+}
+
+#albumcontainer {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #121212;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+#albumcontainer #imgalbumcontainer {
+  margin-top: 2rem;
+}
+#albumcontainer #imgalbumcontainer img {
+  width: 15rem;
+  border-radius: 0.5rem;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.417);
+}
+#albumcontainer #albumtitleanddescription {
+  margin: 2rem 0rem 0rem 1rem;
+  color: white;
+}
+#albumcontainer #albumtitleanddescription p {
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  width: fit-content;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(128deg, rgba(0, 0, 0, 0.6012780112) 17%, rgba(0, 0, 0, 0.35) 100%);
+}
+#albumcontainer #albumtitleanddescription h2 {
+  font-size: 3rem;
+  font-family: "CircularStd";
+  width: auto;
+  padding: 1rem;
+  border-radius: 2rem;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(128deg, rgba(0, 0, 0, 0.6012780112) 17%, rgba(0, 0, 0, 0.5956757703) 100%);
+}
+#albumcontainer #albumtitleanddescription h5 {
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  width: fit-content;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(128deg, rgba(0, 0, 0, 0.6012780112) 17%, rgba(0, 0, 0, 0.5956757703) 100%);
+}
+
+#playeralbum {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #0f0f0f;
+}
+#playeralbum svg {
+  fill: black;
+  background-color: #1ed764;
+  border-radius: 50%;
+  height: 4rem;
+  padding: 1rem;
+}
+#playeralbum i {
+  padding: 1rem;
+  font-size: 2rem;
+  color: #b3b3b3;
+}
+#playeralbum i.bi.bi-heart-fill:hover {
+  color: #1ed764;
+}
+
+#contentalbum {
+  height: fit-content;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #0f0f0f;
+  color: #828282;
+}
+#contentalbum .row p {
+  margin: 0rem;
+}
+#contentalbum .row:hover {
+  background-color: #282828;
+}
+#contentalbum .col-10 p {
+  padding: 0rem;
+  margin: 0rem;
+}
+
+#sidebarcontent {
+  padding: 1rem;
+  background-color: #121212;
+  color: #b3b3b3;
+  border-radius: 0.5rem;
+}
+#sidebarcontent .d-flex i {
+  background-color: #333333;
+}
+#sidebarcontent .d-flex p.rounded-4 {
+  background-color: #333333;
+  color: #333333;
+}
+#sidebarcontent .bi.bi-person-fill {
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background-color: #414141;
+  border-radius: 50%;
+}
+#sidebarcontent .bi.bi-filter-left {
+  font-size: 6rem;
+  height: min-content;
+}
+#sidebarcontent .text-center {
+  height: 100vh;
+}
+#sidebarcontent .text-center button {
+  background-color: white;
+  color: #282828;
+  padding: 1rem 3rem;
+  border-radius: 2rem;
+}
+#sidebarcontent button {
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+}
+
+#sidebar2 {
+  height: 100vh;
+  background-color: black;
+  transition: width 0.3s ease;
+}
+
+.hidden {
+  visibility: hidden;
+  display: none;
+}
+
+button {
+  top: 10px;
+  left: 10px;
+  z-index: 999;
+  color: black;
+}
+
+#closeBtn {
+  cursor: pointer;
+  width: min-content;
+}
+
+.maincolumn {
+  background: rgb(34, 34, 34);
+  background: linear-gradient(0deg, rgb(34, 34, 34) 0%, rgb(18, 18, 18) 42%);
+}
+.maincolumn .mostratutto {
+  font-size: 0.7em;
+}
+.maincolumn .maincard {
+  background-color: #171717;
+  padding: 0.75rem;
+}
+.maincolumn .maincard .song-title {
+  font-size: 0.9em;
+}
+.maincolumn .maincard .artist-title {
+  font-size: 0.7em;
 }/*# sourceMappingURL=style.css.map */
