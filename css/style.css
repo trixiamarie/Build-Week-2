@@ -366,4 +366,49 @@ button {
 }
 .maincolumn .maincard .artist-title {
   font-size: 0.7em;
+}
+
+h1 {
+  font-size: 5em;
+}
+
+.mainBg {
+  background-color: #000000;
+  height: 100vh;
+}
+.mainBg .lightBg {
+  height: 90em !important;
+  padding: 0 !important;
+  background-color: #121212;
+}
+.mainBg .lightBg .about {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  width: 98%;
+  text-shadow: 1px 1px 10px #000000;
+}
+.mainBg .lightBg .about .aboutText {
+  margin-top: 10em;
+}
+.mainBg .lightBg .row a {
+  color: white;
+}
+.mainBg .lightBg li b {
+  font-size: 1.4em;
+}
+.mainBg .artistHero {
+  color: white;
+  background-size: cover;
+  background-position: 0 -5em;
+  background-repeat: no-repeat;
+}
+.mainBg .artistHero button {
+  border-radius: 15em;
+}
+.mainBg .artistHero button svg {
+  height: 0.8em;
+}
+.mainBg .artistHero div.col.d-flex.align-items-center {
+  margin-top: 15em;
 }/*# sourceMappingURL=style.css.map */
