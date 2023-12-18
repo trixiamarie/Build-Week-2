@@ -66,6 +66,7 @@ body {
   background-color: #121212;
   border-radius: 0.5rem;
   padding: 1rem;
+  height: 70.5vh;
 }
 #nav2 :hover ::-webkit-scrollbar-thumb {
   background: #888;
@@ -139,7 +140,7 @@ body {
 
 #listsongs {
   padding: 1rem 0rem 0rem 1rem;
-  height: 70vh;
+  height: 56vh;
 }
 #listsongs a {
   text-decoration: none;
@@ -197,7 +198,7 @@ body {
 }
 
 #internsection {
-  height: 100vh;
+  height: 80vh;
 }
 
 #albumcontainer {
@@ -366,4 +367,8 @@ button {
 }
 .maincolumn .maincard .artist-title {
   font-size: 0.7em;
+}
+
+.void {
+  color: black;
 }/*# sourceMappingURL=style.css.map */
