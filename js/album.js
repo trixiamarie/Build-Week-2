@@ -47,6 +47,7 @@ btnSearch.addEventListener('click', function(){
     window.location = `./artistpage.html?artist=${searchValue}`;
     console.log(searchValue);
 })
+
 document.querySelector('#searchValue').addEventListener('keypress', function(){
     
     let searchValue = document.querySelector('#searchValue').value;
