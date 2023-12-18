@@ -394,4 +394,69 @@ background: linear-gradient(128deg, rgba(0,0,0,0.6012780112044818) 17%, rgba(0,0
         color: $black;
     
       }
-    
+
+      //artistPage
+      #artistpage{
+        .artistHero{
+          color: white;
+          // background-image: url(https://e-cdns-images.dzcdn.net/images/artist/2deec542fc75d5691434c407ee077ff7/1000x1000-000000-80-0-0.jpg);
+          background-size: cover;
+          background-position: 0 -5em;
+          background-repeat: no-repeat;
+            button{
+              border-radius: 15em;
+              svg{
+                height: 0.8em;
+              }
+      
+          }
+          div.col.d-flex.align-items-center{
+            margin-top: 15em;
+      
+          }
+        }
+        .lightBg{
+          height: 140%;
+          padding: 0 !important;
+          .card-body{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 100%;
+          }
+          .about{
+            background-repeat: no-repeat;
+            background-size: cover ;
+            background-position: 50%;
+            width: 98%;
+            text-shadow: 1px 1px 10px #000000;
+            .aboutText{
+              margin-top: 10em;
+            }
+          }
+          .row{ 
+      
+      
+            a{
+              color: white;
+            
+            }
+          }
+          li{
+            b{
+              font-size: 1.4em;
+            }
+          }
+          
+        }
+      }
+      h1{
+        font-size: 5em;
+        text-shadow: 5px 5px 10px black;
+      }
+      div.row{ 
+      p.offset-1{
+        text-shadow: 5px 5px 10px black;
+
+      }
+    }
+
