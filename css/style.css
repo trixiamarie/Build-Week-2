@@ -41,12 +41,29 @@ body {
   background: rgb(0, 0, 0);
   background: linear-gradient(180deg, rgb(0, 0, 0) 32%, rgba(0, 0, 0, 0) 100%);
 }
+.navbar input {
+  background-color: #242424;
+  color: white;
+  border-radius: 1rem;
+  border: 0.1rem solid white;
+  margin-left: 1rem;
+  height: 1.5rem;
+  margin-top: 0.9rem;
+  margin-left: 2rem;
+  padding: 1rem 2.5rem 1rem 1rem;
+}
+.navbar input:focus {
+  border-radius: 1rem;
+}
 
 #nav1 {
   margin-top: 3rem;
   background-color: #121212;
   border-radius: 0.5rem;
   padding: 1rem;
+}
+#nav1 a {
+  text-decoration: none;
 }
 #nav1 button {
   font-family: "CircularStd";
@@ -66,6 +83,7 @@ body {
   background-color: #121212;
   border-radius: 0.5rem;
   padding: 1rem;
+  height: 70.5vh;
 }
 #nav2 :hover ::-webkit-scrollbar-thumb {
   background: #888;
@@ -139,7 +157,7 @@ body {
 
 #listsongs {
   padding: 1rem 0rem 0rem 1rem;
-  height: 70vh;
+  height: 56vh;
 }
 #listsongs a {
   text-decoration: none;
@@ -197,7 +215,7 @@ body {
 }
 
 #internsection {
-  height: 100vh;
+  height: 80vh;
 }
 
 #albumcontainer {
@@ -366,4 +384,8 @@ button {
 }
 .maincolumn .maincard .artist-title {
   font-size: 0.7em;
+}
+
+.void {
+  color: black;
 }/*# sourceMappingURL=style.css.map */

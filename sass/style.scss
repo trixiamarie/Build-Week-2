@@ -27,16 +27,35 @@ body{
 }
 #navbarhomepage{
   background: none;
+  
   .btnb{
     background-color: #0e0e0e;
   }
 }
 .navbar{
+  input{
+    background-color: $inputbg;
+    color: $white;
+    border-radius: 1rem;
+    border: 0.1rem solid $white;
+    margin-left: 1rem;
+    height: 1.5rem;
+    margin-top: 0.9rem;
+    margin-left: 2rem;
+    padding: 1rem 2.5rem 1rem 1rem;
+    &:focus{
+      border-radius: 1rem;
+    }
+   }
     margin-top: 2rem;
     background: rgb(0,0,0);
 background: linear-gradient(180deg, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 100%);
 }
 #nav1{
+  a{
+     text-decoration: none;
+  }
+ 
   margin-top: 3rem;
     background-color: $navbg;
     border-radius: 0.5rem;
