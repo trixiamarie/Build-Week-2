@@ -64,6 +64,7 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 100%);
     background-color: $navbg;
     border-radius: 0.5rem;
     padding: 1rem;
+    height: 70.5vh;
     .libreria{
         font-family: map-get($font-bold, font-family);
         border: none;
@@ -134,7 +135,7 @@ background: linear-gradient(128deg, rgba(55,36,134,1) 17%, rgba(135,148,158,1) 1
 
   #listsongs{
     padding: 1rem 0rem 0rem 1rem;
-    height: 70vh;
+    height: 56vh;
     a{
         text-decoration: none;
         color: $text2;
@@ -209,7 +210,7 @@ background: linear-gradient(128deg, rgba(55,36,134,1) 17%, rgba(135,148,158,1) 1
     
   // }
   #internsection{
-    height: 100vh;
+    height: 80vh;
   }
   #albumcontainer{
     background-size: cover;
@@ -387,4 +388,9 @@ background: linear-gradient(128deg, rgba(0,0,0,0.6012780112044818) 17%, rgba(0,0
         font-size: 0.7em;
       }
       }
+      }
+
+      .void{
+        color: $black;
+    
       }

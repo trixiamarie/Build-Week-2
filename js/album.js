@@ -26,11 +26,11 @@ function listsongs(song){
     });
 }
 
-// let params = new URLSearchParams(document.location.search);
-// let id = params.get("id");
-// console.log("ID from URL:", id);
+let params = new URLSearchParams(document.location.search);
+let id = params.get("id");
+console.log("ID from URL:", id);
 
-fetch("https://striveschool-api.herokuapp.com/api/deezer/album/75621062", {
+fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${id}`, {
     method: "GET",
 })
 .then((response)=> response.json())
