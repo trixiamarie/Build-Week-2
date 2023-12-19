@@ -252,6 +252,9 @@ body {
 #homepagecontent:hover ::-webkit-scrollbar-thumb {
   background: #555;
 }
+#homepagecontent .mb-3 a {
+  text-decoration: none;
+}
 
 #sidebar {
   margin-top: 3em;

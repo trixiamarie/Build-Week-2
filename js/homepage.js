@@ -25,6 +25,7 @@ fetch(api, {
 .then((data)=>{
     console.log(data);
     listsongs(data);
+    createcardsong(data);
 })
 .catch((error) =>{
     console.error("Errore nella richiesta:", error);
