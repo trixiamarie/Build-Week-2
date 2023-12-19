@@ -198,17 +198,101 @@ document.querySelector('#btnForward').addEventListener('click', function(){
 })
 
 //PLAYER AUDIO
-function playAudio(data){
+
+const audioElement = new Audio();
+
+function playAudio(data) {
+  // Stop and hide the current audio
+  stopAndHideCurrentAudio();
+
   document.getElementById('current_album').innerHTML = `
-                  <img src="${data.album.cover_medium}" class="mx-2" height="80px" alt="${data.title}" />
-                  <div class="flex-column">
-                      <h4 class="fw-bold text-white">${data.title}</h4>
-                      <p class="fw-bold text-white">${data.artist.name}</p>
-                  </div>
-              `;
-  const audioPlayer = document.getElementById('audioPlayer');
-  audioPlayer.src = data.preview;
-   audioPlayer.play();
+    <img src="${data.album.cover_medium}" class="mx-2" height="80px" alt="${data.title}" />
+    <div class="flex-column">
+      <h4 class="fw-bold text-white">${data.title}</h4>
+      <p class="fw-bold text-white">${data.artist.name}</p>
+    </div>
+  `;
+
+  console.log("Playing audio:", data);
+
+  const content = document.querySelector(".content");
+  const playBtn = content.querySelector(".play-pause");
+  const playBtnIcon = playBtn.querySelector("span");
+  const progressBar = content.querySelector(".progress-bar");
+  const progressDetails = content.querySelector(".progress-details");
+  const repeatBtn = content.querySelector("#repeat");
+
+  // Set the new audio source
+  audioElement.src = data.preview;
+
+  // Play the new audio
+  playSong();
+
+  playBtn.addEventListener("click", () => {
+    const isMusicPaused = content.classList.contains("paused");
+    if (isMusicPaused) {
+      pauseSong();
+    } else {
+      playSong();
+    }
+  });
+
+  function playSong() {
+    content.classList.add("paused");
+    playBtnIcon.innerHTML = "pause";
+    audioElement.play();
+  }
+
+  function pauseSong() {
+    content.classList.remove("paused");
+    playBtnIcon.innerHTML = "play_arrow";
+    audioElement.pause();
+  }
+
+  audioElement.addEventListener("timeupdate", (e) => {
+    const initialTime = e.target.currentTime;
+    const finalTime = e.target.duration;
+    let BarWidth = (initialTime / finalTime) * 100;
+    progressBar.style.width = BarWidth + "%";
+
+    progressDetails.addEventListener("click", (e) => {
+      let progressValue = progressDetails.clientWidth;
+      let clickedOffsetX = e.offsetX;
+      let MusicDuration = audioElement.duration;
+
+      audioElement.currentTime = (clickedOffsetX / progressValue) * MusicDuration;
+    });
+
+    audioElement.addEventListener("loadeddata", () => {
+      let finalTimeData = content.querySelector(".final");
+      let AudioDuration = audioElement.duration;
+      let finalMinutes = Math.floor(AudioDuration / 60);
+      let finalSeconds = Math.floor(AudioDuration % 60);
+      if (finalSeconds < 10) {
+        finalSeconds = "0" + finalSeconds;
+      }
+      finalTimeData.innerText = finalMinutes + ":" + finalSeconds;
+    });
+
+    let currentTimeData = content.querySelector(".current");
+    let CurrentTime = audioElement.currentTime;
+    let currentMinutes = Math.floor(CurrentTime / 60);
+    let currentSeconds = Math.floor(CurrentTime % 60);
+    if (currentSeconds < 10) {
+      currentSeconds = "0" + currentSeconds;
+    }
+    currentTimeData.innerText = currentMinutes + ":" + currentSeconds;
+  });
+
+  repeatBtn.addEventListener("click", () => {
+    audioElement.currentTime = 0;
+  });
+}
+
+// Funzione per fermare e nascondere l'audio corrente
+function stopAndHideCurrentAudio() {
+  audioElement.pause();
+  audioElement.src = ""; // Imposta il sorgente vuoto
 }
 
 //card homepage

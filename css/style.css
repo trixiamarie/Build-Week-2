@@ -163,13 +163,71 @@ body {
   color: #b3b3b3;
 }
 
+.content {
+  width: 350px;
+  border-radius: 15px;
+}
+
+.progress-details {
+  width: 100%;
+  height: 6px;
+  background-color: #ccc;
+  border-radius: 15px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: inherit;
+  border-radius: inherit;
+  background-color: #0987f6;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress-bar span {
+  width: 12px;
+  height: 12px;
+  background-color: #0987f6;
+  border-radius: inherit;
+  right: -5px;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.progress-details:hover .progress-bar span {
+  opacity: 1;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+  color: #4d4d4d;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.control-btn span {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4d4d4d;
+}
+
+.control-btn span:active {
+  background-color: #4d4d4d;
+}
+
 #audioPlayer {
   width: 100%;
-  margin-top: 0;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
 }
 
 .bg-container {

@@ -28,6 +28,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!--GOOGLE FONTS-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!--STYLE-->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
@@ -268,7 +270,7 @@
         </div>
   
       <!--PLAYER-->      
-          <div class="row py-3">
+          <div class="row">
               <div class="col-md-3 d-flex" id="current_album">
                  <!--  <img src="assets/imgs/main/image-1.jpg" class="mx-2" height="80px" alt="#" />
                   <div class="flex-column">
@@ -283,7 +285,27 @@
                       </svg></picture> -->
               </div>
               <div class=" col-md-6 playerControls mt-1">
-                <audio id="audioPlayer" controls></audio>
+                <!-- CONTROLLI PLAYER -->
+                <div id="audioPlayer" class="content">
+                  <div class="control-btn">
+                    <span class="material-symbols-rounded" id="repeat">repeat</span>
+                    <span class="material-symbols-rounded" id="prev">skip_previous</span>
+                    <div class="play-pause">
+                      <span class="material-symbols-rounded">play_arrow</span>
+                    </div>
+                    <span class="material-symbols-rounded" id="next">skip_next</span>
+                    <span class="material-symbols-rounded" id="shuffle">shuffle</span>
+                  </div>
+                  <div class="progress-details">
+                    <div class="progress-bar">
+                      <span></span>
+                    </div>
+                    <div class="time">
+                      <span class="current">0:00</span>
+                      <span class="final">0:30</span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3">
                   <ul class="list-unstyled d-flex justify-content-center">
