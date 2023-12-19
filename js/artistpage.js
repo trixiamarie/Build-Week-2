@@ -6,40 +6,188 @@ let id = params.get("id");
 // let id = 475;
 console.log("ID from URL:", id);
 
+//LOCAL STORAGE PER ALBUM SALVATI
+let storedAlbums = localStorage.getItem('AlbumLiked');
+console.log('Stored Albums:', storedAlbums);
+let arrayHeartAlbum = storedAlbums !== null ? JSON.parse(storedAlbums) : [];
+console.log('Parsed Array Albums:', arrayHeartAlbum);
+
+//LOCAL STORAGE PER ARTISTI SALVATI
+let storedArtist = localStorage.getItem('ArtistLiked');
+console.log('Stored Artist:', storedArtist);
+let arrayHeartArtist = storedArtist !== null ? JSON.parse(storedArtist) : [];
+console.log('Parsed Array Artist:', arrayHeartArtist);
+
+//SIDEBAR FETCH
 fetch(api, {
-  method: "GET",
+    method: "GET",
+    
 })
-  .then((response) => response.json())
-  .then((data) => {
+.then((response)=> response.json())
+.then((data)=>{
     console.log(data);
     listsongs(data);
-  })
-  .catch((error) => {
+})
+.catch((error) =>{
     console.error("Errore nella richiesta:", error);
-  });
-
-function listsongs(song) {
-  console.log(song.data);
-  song.data.forEach((element) => {
-    let div = document.querySelector("#listsongs");
-    let a = document.createElement("a");
-    a.href = element.link;
-    let p = document.createElement("p");
-    p.innerText = element.title;
-    div.appendChild(a);
-    a.appendChild(p);
-  });
-}
-
-//sidebar
-document.getElementById("toggleBtn").addEventListener("click", function () {
-  const sidebar = document.getElementById("sidebar2");
-  sidebar.classList.toggle("hidden");
 });
 
-document.getElementById("closeBtn").addEventListener("click", function () {
-  const sidebar = document.getElementById("sidebar2");
-  sidebar.classList.add("hidden");
+//SIDEBAR SINISTRO SEARCH
+let searchBtn = document.querySelectorAll('.searchElement');
+searchBtn.forEach((x) =>{
+    x.addEventListener('click', function() {
+        const input = document.querySelector('#searchBar');
+        input.classList.toggle('hidden');
+        input.focus();
+    })}
+)
+
+
+let btnSearch = document.querySelector('#btnSearch');
+btnSearch.addEventListener('click', function(){
+    let searchValue = document.querySelector('#searchValue').value;
+    window.location = `./artistpage.html?artist=${searchValue}`;
+    console.log(searchValue);
+})
+
+document.querySelector('#searchValue').addEventListener('keyup', function(event) {
+  if (event.key === 'Enter') {
+      let searchValue = document.querySelector('#searchValue').value;
+      window.location = `./artistpage.html?artist=${searchValue}`;
+      console.log(searchValue);
+  }
+});
+
+
+//LISTA ALBUM SALVATI
+let btnAlbum = document.querySelector('#btnAlbum');
+btnAlbum.addEventListener('click',  function () {
+    let div = document.querySelector('.listsongs');
+    div.innerHTML = '';
+    let divSearch = document.createElement('div');
+    divSearch.classList.add('d-flex', 'justify-content-between', 'align-items-center');
+    divSearch.innerHTML = `<i class="bi bi-search"></i>
+    <div class="d-flex align-items-baseline">
+      <p class="m-0 p-2">Recenti</p>
+      <i class="bi bi-list-ul fs-4 mt-auto me-3"></i>
+    </div>`
+
+    div.appendChild(divSearch);
+    arrayHeartAlbum.forEach((element) => {
+    fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${element}`, {
+            method: "GET",
+        })
+        .then((response)=> response.json())
+        .then((data)=>{
+            console.log(data);
+            let div = document.querySelector('.listsongs');
+            let a =document.createElement('a');
+            a.href = `./album.html?id=${data.id}`;
+            let p = document.createElement('p');
+            p.innerText = data.title;
+            div.appendChild(a);
+            a.appendChild(p);
+    })
+        .catch((error) =>{
+            console.error("Errore nella richiesta:", error);
+        });
+
+     });
+    
+});
+
+//LISTA ARTISTI SALVATI
+let btnArtist = document.querySelector('#btnArtist');
+btnArtist.addEventListener('click', function () {
+    let div = document.querySelector('.listsongs');
+    div.innerHTML = '';
+    let divSearch = document.createElement('div');
+    divSearch.classList.add('d-flex', 'justify-content-between', 'align-items-center');
+    divSearch.innerHTML = `<i class="bi bi-search"></i>
+    <div class="d-flex align-items-baseline">
+      <p class="m-0 p-2">Recenti</p>
+      <i class="bi bi-list-ul fs-4 mt-auto me-3"></i>
+    </div>`
+    div.appendChild(divSearch);
+
+    arrayHeartArtist.forEach((element) => {
+        fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${element}`, {
+                method: "GET",
+            })
+            .then((response)=> response.json())
+            .then((data)=>{
+                console.log(data);
+                let div = document.querySelector('.listsongs');
+                let a =document.createElement('a');
+                a.href = `./artistpage.html?id=${data.id}`;
+                let p = document.createElement('p');
+                p.innerText = data.name;
+                div.appendChild(a);
+                a.appendChild(p);
+        })
+            .catch((error) =>{
+                console.error("Errore nella richiesta:", error);
+            });
+    
+         });
+});
+
+//LISTA PLAYLIST AL CLICK
+let btnPlaylist = document.querySelector('#btnPlaylist');
+btnPlaylist.addEventListener('click', function () {
+    let div = document.querySelector('.listsongs');
+    div.innerHTML = '';
+    let divSearch = document.createElement('div');
+    divSearch.classList.add('d-flex', 'justify-content-between', 'align-items-center');
+    divSearch.innerHTML = `<i class="bi bi-search"></i>
+    <div class="d-flex align-items-baseline">
+      <p class="m-0 p-2">Recenti</p>
+      <i class="bi bi-list-ul fs-4 mt-auto me-3"></i>
+    </div>`
+
+    div.appendChild(divSearch);
+
+    fetch(api, {
+        method: "GET",
+        
+    })
+    .then((response)=> response.json())
+    .then((data)=>{
+        console.log(data);
+        listsongs(data);
+    })
+    .catch((error) =>{
+        console.error("Errore nella richiesta:", error);
+    });
+});
+
+//LISTA PLAYLIST AL CARICAMENTO DELLA PAGINA
+function listsongs(song){
+
+    console.log(song.data);
+    song.data.forEach((element) => {
+       let div = document.querySelectorAll('.listsongs');
+       div.forEach((div)=>{
+       let a = document.createElement('a');
+       a.addEventListener('click', function(){
+        playAudio(element);
+    })
+       let p = document.createElement('p');
+       p.innerText = element.title;
+       div.appendChild(a);
+       a.appendChild(p);}
+    )});
+}
+
+//SIDEBAR ATTIVITÀ AMICI
+document.getElementById('toggleBtn').addEventListener('click', function() {
+    const sidebar = document.getElementById('sidebar2');
+    sidebar.classList.toggle('hidden');
+});
+  
+document.getElementById('closeBtn').addEventListener('click', function() {
+    const sidebar = document.getElementById('sidebar2');
+    sidebar.classList.add('hidden');
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -47,6 +195,28 @@ document.addEventListener("DOMContentLoaded", () => {
   let cardDiv = document.querySelector(".cardDiv");
   console.log(cardDiv);
 });
+
+//BOTTONI AVANTI E INDIETRO
+document.querySelector('#btnBack').addEventListener('click', function(){
+  window.history.back();
+})
+document.querySelector('#btnForward').addEventListener('click', function(){
+  window.history.forward();
+})
+
+//PLAYER AUDIO
+function playAudio(data){
+  document.getElementById('current_album').innerHTML = `
+                  <img src="${data.album.cover_medium}" class="mx-2" height="80px" alt="${data.title}" />
+                  <div class="flex-column">
+                      <h4 class="fw-bold text-white">${data.title}</h4>
+                      <p class="fw-bold text-white">${data.artist.name}</p>
+                  </div>
+              `;
+  const audioPlayer = document.getElementById('audioPlayer');
+  audioPlayer.src = data.preview;
+   audioPlayer.play();
+}
 
 // function listsongs(song) {
 //   console.log(song.data);
@@ -146,6 +316,7 @@ function placeData(tracks) {
                 </div>
               </div>
               `;
+              console.log(tracks.data[i]);
     let cutTitle = "";
     if (tracks.data[i].album.title.length > 20) {
       cutTitle = tracks.data[i].album.title.slice(0, 20) + "...";
@@ -163,6 +334,13 @@ function placeData(tracks) {
 
     // aboutDiv.style.backgroundImage = `url(${})`
   }
+  // let src = document.querySelectorAll('a');
+  //   src.forEach((x) => {
+  //     x.addEventListener('click', function(){
+  //       playAudio(tracks.data[i]);
+  //     })
+  //   })
+  // CI HO PROVATO
 }
 function about(data) {
   console.log(data);

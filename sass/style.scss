@@ -24,6 +24,7 @@ body{
 .dots{
     color:$text2;
     font-size: 2rem;
+    margin-left: 2.7rem;
 }
 #navbarhomepage{
   background: none;
@@ -48,8 +49,49 @@ body{
     }
    }
     margin-top: 2rem;
-    background: rgb(0,0,0);
-background: linear-gradient(180deg, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 100%);
+    background: $background-color;
+background: linear-gradient(180deg, $background-color 32%, $gradient-color 100%);
+
+.dropbtn {
+  margin-left: 1rem;
+  margin-top: 1.4rem;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  
+  right: 0;
+  background-color: $inputbg;
+  min-width: 16rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+
+.dropdown-content a {
+  color: $white;
+  font-size: 0.8rem;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: lighten($inputbg, 5%);}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 }
 #nav1{
   a{
@@ -75,9 +117,9 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 100%);
     }
 }
 #nav2{
-    :hover{
+    &:hover{
         ::-webkit-scrollbar-thumb {
-            background: #888; 
+          background: #555; 
           }
     }
     background-color: $navbg;
@@ -101,6 +143,9 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 100%);
         border-radius: 1rem;
         padding: 0.3rem 1rem;
         margin-right: 0.5rem;
+        &:hover{
+          background-color: lighten(#232323, 10%);
+        }
     }
     .piacciono{
         padding: 0;
@@ -121,6 +166,18 @@ background: linear-gradient(128deg, rgba(55,36,134,1) 17%, rgba(135,148,158,1) 1
         color: $text2;
     }
 }
+
+
+//PLAYER 
+#audioPlayer {
+  width: 100%; 
+  margin-top: 0;
+  background-color: #f0f0f0; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  padding: 10px; 
+}
+
 .bg-container {
     height: 5.5rem;
     background-color: $text;
@@ -152,7 +209,7 @@ background: linear-gradient(128deg, rgba(55,36,134,1) 17%, rgba(135,148,158,1) 1
     color: $white;
   }
 
-  #listsongs{
+  .listsongs{
     padding: 1rem 0rem 0rem 1rem;
     height: 56vh;
     a{
@@ -194,7 +251,16 @@ background: linear-gradient(128deg, rgba(55,36,134,1) 17%, rgba(135,148,158,1) 1
 }
 
 #homepagecontent{
-  height: 100vh;
+  height: 78vh;
+  border-radius: 0.5rem;
+  background-color: $navbg;
+  padding: 0rem;
+  margin: 0rem;
+  &:hover{
+    ::-webkit-scrollbar-thumb {
+      background: #555; 
+      }
+}
 }
 
 
@@ -230,7 +296,12 @@ background: linear-gradient(128deg, rgba(55,36,134,1) 17%, rgba(135,148,158,1) 1
   // }
   #internsection{
     height: 80vh;
+    &:hover{
+      ::-webkit-scrollbar-thumb {
+        background: #555; 
+        }
   }
+}
   #albumcontainer{
     background-size: cover;
     background-repeat: no-repeat ;
@@ -292,15 +363,13 @@ background: linear-gradient(128deg, rgba(0,0,0,0.6012780112044818) 17%, rgba(0,0
       padding: 1rem;
       font-size: 2rem;
       color: $text2;
+      &:hover{
+        color: $greenspotify;
       }
-      i.bi.bi-heart-fill{
-        &:hover{
-         color:#1ed764;
-        } 
-    }
+      }
   }
   #contentalbum{
-    height: fit-content;
+    height: 100vh;
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: darken($text, 10%);
@@ -323,6 +392,7 @@ background: linear-gradient(128deg, rgba(0,0,0,0.6012780112044818) 17%, rgba(0,0
 
 //SIDEBAR
 #sidebarcontent{
+  height: 83.5vh;
   padding: 1rem;
   background-color: #121212;
   color: $text2;
@@ -367,7 +437,7 @@ background: linear-gradient(128deg, rgba(0,0,0,0.6012780112044818) 17%, rgba(0,0
   }
 }
   #sidebar2 {
-    height: 100vh;
+    height: 87vh;
     background-color: black;
     transition: width 0.3s ease;
   }
@@ -416,6 +486,8 @@ background: linear-gradient(128deg, rgba(0,0,0,0.6012780112044818) 17%, rgba(0,0
 
       //artistPage
       #artistpage{
+        background-color: $navbg;
+        border-radius: 0.5rem;
         .artistHero{
           color: white;
           // background-image: url(https://e-cdns-images.dzcdn.net/images/artist/2deec542fc75d5691434c407ee077ff7/1000x1000-000000-80-0-0.jpg);
@@ -477,5 +549,31 @@ background: linear-gradient(128deg, rgba(0,0,0,0.6012780112044818) 17%, rgba(0,0
         text-shadow: 5px 5px 10px black;
 
       }
+    }
+    #playerartist{
+      svg{
+        fill: black;
+        background-color:#1ed764;
+        border-radius: 50%;
+        height: 4rem;
+        padding: 1rem;
+      }
+      i{
+        padding: 1rem;
+        font-size: 2rem;
+        color: $text2;
+        &:hover{
+          color: $greenspotify;
+        }
+        }
+      button.btn{
+          border-radius: 2rem;
+          border: 0.1rem solid $white;
+          color: $white;
+          &:hover{
+            background-color: lighten($navbg, 10%);
+          }
+        }
+      
     }
 

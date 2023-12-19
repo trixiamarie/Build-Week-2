@@ -48,18 +48,19 @@ btnSearch.addEventListener('click', function(){
     console.log(searchValue);
 })
 
-document.querySelector('#searchValue').addEventListener('keypress', function(){
-    
-    let searchValue = document.querySelector('#searchValue').value;
-    window.location = `./artistpage.html?artist=${searchValue}`;
-    console.log(searchValue);
-    // console.log(e.key);
-})
+document.querySelector('#searchValue').addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        let searchValue = document.querySelector('#searchValue').value;
+        window.location = `./artistpage.html?artist=${searchValue}`;
+        console.log(searchValue);
+    }
+});
+
 
 //LISTA ALBUM SALVATI
 let btnAlbum = document.querySelector('#btnAlbum');
 btnAlbum.addEventListener('click',  function () {
-    let div = document.querySelector('#listsongs');
+    let div = document.querySelector('.listsongs');
     div.innerHTML = '';
     let divSearch = document.createElement('div');
     divSearch.classList.add('d-flex', 'justify-content-between', 'align-items-center');
@@ -77,7 +78,7 @@ btnAlbum.addEventListener('click',  function () {
         .then((response)=> response.json())
         .then((data)=>{
             console.log(data);
-            let div = document.querySelector('#listsongs');
+            let div = document.querySelector('.listsongs');
             let a =document.createElement('a');
             a.href = `./album.html?id=${data.id}`;
             let p = document.createElement('p');
@@ -96,7 +97,7 @@ btnAlbum.addEventListener('click',  function () {
 //LISTA ARTISTI SALVATI
 let btnArtist = document.querySelector('#btnArtist');
 btnArtist.addEventListener('click', function () {
-    let div = document.querySelector('#listsongs');
+    let div = document.querySelector('.listsongs');
     div.innerHTML = '';
     let divSearch = document.createElement('div');
     divSearch.classList.add('d-flex', 'justify-content-between', 'align-items-center');
@@ -114,7 +115,7 @@ btnArtist.addEventListener('click', function () {
             .then((response)=> response.json())
             .then((data)=>{
                 console.log(data);
-                let div = document.querySelector('#listsongs');
+                let div = document.querySelector('.listsongs');
                 let a =document.createElement('a');
                 a.href = `./artistpage.html?id=${data.id}`;
                 let p = document.createElement('p');
@@ -132,7 +133,7 @@ btnArtist.addEventListener('click', function () {
 //LISTA PLAYLIST AL CLICK
 let btnPlaylist = document.querySelector('#btnPlaylist');
 btnPlaylist.addEventListener('click', function () {
-    let div = document.querySelector('#listsongs');
+    let div = document.querySelector('.listsongs');
     div.innerHTML = '';
     let divSearch = document.createElement('div');
     divSearch.classList.add('d-flex', 'justify-content-between', 'align-items-center');
@@ -160,13 +161,15 @@ btnPlaylist.addEventListener('click', function () {
 
 //LISTA PLAYLIST AL CARICAMENTO DELLA PAGINA
 function listsongs(song){
-    
+
     console.log(song.data);
     song.data.forEach((element) => {
        let div = document.querySelectorAll('.listsongs');
        div.forEach((div)=>{
        let a = document.createElement('a');
-       a.href = element.link;
+       a.addEventListener('click', function(){
+        playAudio(element);
+    })
        let p = document.createElement('p');
        p.innerText = element.title;
        div.appendChild(a);
@@ -185,6 +188,27 @@ document.getElementById('closeBtn').addEventListener('click', function() {
     sidebar.classList.add('hidden');
 });
   
+//BOTTONI AVANTI E INDIETRO
+document.querySelector('#btnBack').addEventListener('click', function(){
+    window.history.back();
+})
+document.querySelector('#btnForward').addEventListener('click', function(){
+    window.history.forward();
+})
+
+//PLAYER AUDIO
+function playAudio(data){
+    document.getElementById('current_album').innerHTML = `
+                    <img src="${data.album.cover_medium}" class="mx-2" height="80px" alt="${data.title}" />
+                    <div class="flex-column">
+                        <h4 class="fw-bold text-white">${data.title}</h4>
+                        <p class="fw-bold text-white">${data.artist.name}</p>
+                    </div>
+                `;
+    const audioPlayer = document.getElementById('audioPlayer');
+    audioPlayer.src = data.preview;
+     audioPlayer.play();
+}
 
 //SEZIONE ALBUM
 fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${id}`, {
@@ -264,7 +288,9 @@ function createContentAlbum(id){
         col10.classList.add('col-10','d-flex', 'flex-column' );
         let tSong = document.createElement('a');
         tSong.classList.add('text-decoration-none');
-        tSong.href = x.link;
+        tSong.addEventListener('click', function(){
+            playAudio(x);
+        })
         tSong.style.color="#e9e9e9";
         let tArtist = document.createElement('a');
         tArtist.style.color="#828282";

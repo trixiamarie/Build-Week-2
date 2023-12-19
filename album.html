@@ -107,7 +107,7 @@
               <li class="nav-item">
                 <div class="d-flex align-items-center mb-3"></div>
               </li>
-              <div id="listsongs" class="overflow-scroll">
+              <div class="listsongs overflow-scroll">
                 <div class="d-flex justify-content-between align-items-center">
                   <i class="bi bi-search"></i>
                   <div class="d-flex align-items-baseline">
@@ -127,19 +127,19 @@
           </div>
 <!--MAIN ALBUM PAGE-->
           <div id="albumsection" class="col-md col-sm-12 bg-black">
+            <!--NAVBAR COMUNE CENTRALE-->
             <nav class="navbar">
               <div class="btn-group">
-                <button class="btn p-0 m-1 border-0">
+                <button id="btnBack" class="btn p-0 m-1 border-0">
                   <i class="fa-solid fa-circle-arrow-left fa-xl text-white"></i>
                 </button>
-                <button class="btn p-0 m-0 ms-1 border-0">
+                <button id="btnForward" class="btn p-0 m-0 ms-1 border-0">
                   <i class="fa-solid fa-circle-arrow-right fa-xl text-white"></i>
                 </button>
                   <div id='searchBar' class="hidden">
                   <input id="searchValue" name='search' type='search' placeholder='Cosa vuoi ascoltare?'> 
                   <button id="btnSearch" type="button" class="bg-transparent border border-0 text-white"><i class="bi bi-search"></i></button>
-                  </div>  
-                 
+                  </div>                   
                 
               </div>
               <div class="btn-group">
@@ -152,13 +152,24 @@
                 <button id="toggleBtn" class="btn px-1 py-1 m-2 border-0 float-end bg-black rounded-5">
                   <i class="fa-solid fa-users text-white p-1"></i>
                 </button>
-                <button class="btn me-3 border-0 float-end bg-transparent rounded-5">
-                  <i class="fa-regular fa-user text-white"></i>
-                </button>
+
+                <div class="dropdown me-3 float-end" style="float:right;">
+                  <button class="dropbtn"><i class="fa-regular fa-user text-white"></i></button>
+                  <div class="dropdown-content">
+                  <a href="#">Account <i class="bi bi-box-arrow-up-right float-end"></i></a>
+                  <a href="#">Profilo</a>
+                  <a href="#">Effettua l'upgrade a premium <i class="bi bi-box-arrow-up-right float-end"></i></a>
+                  <a href="#">Sessione privata</a>
+                  <a href="#">Impostazioni</a>
+                  <a href="#" style="border-top: 0.1rem solid rgba(255, 255, 255, 0.478);">Esci</a>
+                  </div>
+                </div>
+
               </div>
             </nav>
+
+<!--INIZIO CONTENUTO PAGINA-->
             <div id="internsection" class="overflow-scroll">
-            
             <!--ALBUM-->
             <div id="albumcontainer" >
               <div class="d-flex mt-5">
@@ -198,12 +209,9 @@
               </div>
               <hr>
             </div>
-
-            <div
-            class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-6 imgLinks py-3" id="rockSection"></div>
 </div>
           </div>
-    <!--ATTIVITÀ AMICI-->
+    <!--ATTIVITÀ AMICI COMUNE-->
           <div id="sidebar2" class="hidden col-md-3 col-sm-12">
             <div>
               <div id="sidebarcontent" class="mt-5">
@@ -258,7 +266,8 @@
             </div>
           </div>
         </div>
-        
+  
+      <!--PLAYER-->      
           <div class="row py-3">
               <div class="col-md-3 d-flex" id="current_album">
                  <!--  <img src="assets/imgs/main/image-1.jpg" class="mx-2" height="80px" alt="#" />
@@ -274,45 +283,7 @@
                       </svg></picture> -->
               </div>
               <div class=" col-md-6 playerControls mt-1">
-                  <ul class="list-unstyled d-flex justify-content-center">
-                      <li class="mx-2"><a href="#"><svg data-encore-id="icon" role="img" aria-hidden="true"
-                                  viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 kPpCsU">
-                                  <path
-                                      d="M13.151.922a.75.75 0 1 0-1.06 1.06L13.109 3H11.16a3.75 3.75 0 0 0-2.873 1.34l-6.173 7.356A2.25 2.25 0 0 1 .39 12.5H0V14h.391a3.75 3.75 0 0 0 2.873-1.34l6.173-7.356a2.25 2.25 0 0 1 1.724-.804h1.947l-1.017 1.018a.75.75 0 0 0 1.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 0 0 .39 3.5z">
-                                  </path>
-                                  <path
-                                      d="m7.5 10.723.98-1.167.957 1.14a2.25 2.25 0 0 0 1.724.804h1.947l-1.017-1.018a.75.75 0 1 1 1.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 1 1-1.06-1.06L13.109 13H11.16a3.75 3.75 0 0 1-2.873-1.34l-.787-.938z">
-                                  </path>
-                              </svg></a></li>
-                      <li class="mx-2"><a href="#"><svg data-encore-id="icon" role="img" aria-hidden="true"
-                                  viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 kPpCsU">
-                                  <path
-                                      d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z">
-                                  </path>
-                              </svg></a></li>
-                      <li class="mx-2"><a href="#"><svg data-encore-id="icon" role="img" aria-hidden="true"
-                                  viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 kPpCsU">
-                                  <path
-                                      d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
-                                  </path>
-                              </svg></a></li>
-                      <li class="mx-2"><svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16"
-                              class="Svg-sc-ytk21e-0 kPpCsU">
-                              <path
-                                  d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z">
-                              </path>
-                          </svg></li>
-                      <li class="mx-2"><a href="#"><svg data-encore-id="icon" role="img" aria-hidden="true"
-                                  viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 kPpCsU">
-                                  <path
-                                      d="M0 4.75A3.75 3.75 0 0 1 3.75 1h8.5A3.75 3.75 0 0 1 16 4.75v5a3.75 3.75 0 0 1-3.75 3.75H9.81l1.018 1.018a.75.75 0 1 1-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 1 1 1.06 1.06L9.811 12h2.439a2.25 2.25 0 0 0 2.25-2.25v-5a2.25 2.25 0 0 0-2.25-2.25h-8.5A2.25 2.25 0 0 0 1.5 4.75v5A2.25 2.25 0 0 0 3.75 12H5v1.5H3.75A3.75 3.75 0 0 1 0 9.75v-5z">
-                                  </path>
-                              </svg></a></li>
-                  </ul>
-                  <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
-                      aria-valuemin="0" aria-valuemax="100">
-                      <div class="progress-bar bg-white" style="width: 50%"></div>
-                  </div>
+                <audio id="audioPlayer" controls></audio>
               </div>
               <div class="col-md-3">
                   <ul class="list-unstyled d-flex justify-content-center">
@@ -361,7 +332,6 @@
               
       </div>
 
-      <!--PLAYER-->
       
     </main>
 
