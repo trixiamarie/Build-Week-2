@@ -1,3 +1,5 @@
+// alert('ciao');
+
 let api = "https://striveschool-api.herokuapp.com/api/deezer/search?q={no}";
 let artistUrl =
   "https://striveschool-api.herokuapp.com/api/deezer/search?q={jimi hendrix}";
@@ -26,7 +28,7 @@ fetch(api, {
 })
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     listsongs(data);
   })
   .catch((error) => {
@@ -129,7 +131,7 @@ btnArtist.addEventListener("click", function () {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         let div = document.querySelector(".listsongs");
         let a = document.createElement("a");
         a.href = `./artistpage.html?id=${data.id}`;
@@ -212,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchArtist(id);
   }
   let cardDiv = document.querySelector(".cardDiv");
-  console.log(cardDiv);
+  // console.log(cardDiv);
 });
 
 //BOTTONI AVANTI E INDIETRO
@@ -239,7 +241,7 @@ function playAudio(data) {
     </div>
   `;
 
-  console.log("Playing audio:", data);
+  // console.log("Playing audio:", data);
 
   const content = document.querySelector(".content");
   const playBtn = content.querySelector(".play-pause");
@@ -345,8 +347,8 @@ function fetchSearch(name) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      console.log(data.data[0].artist.id);
+      // console.log(data);
+      // console.log(data.data[0].artist.id);
       fetchArtist(data.data[0].artist.id);
     })
     .catch((error) => {
@@ -367,9 +369,7 @@ function fetchArtist(artistId) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-
-      console.log(data.tracklist);
+      // console.log(data.tracklist);
       fetchTracklist(data.tracklist);
       about(data);
       document.querySelector(
@@ -384,6 +384,34 @@ function fetchArtist(artistId) {
       ).innerHTML = `${data.nb_fan} ascoltatori mensili`;
 
       document.title = data.name;
+
+      document
+        .querySelector("button#followperartisti")
+        .addEventListener("click", () => {
+          console.log(arrayHeartArtist);
+          if (!arrayHeartArtist.includes(data.id)) {
+            arrayHeartArtist.push(data.id);
+
+            localStorage.setItem(
+              "ArtistLiked",
+              JSON.stringify(arrayHeartArtist)
+            );
+            console.log(data.id);
+          } else {
+            console.log("Artist already in the liked list");
+            const indexToRemove = arrayHeartArtist.indexOf(data.id);
+
+            if (indexToRemove !== -1) {
+              arrayHeartArtist.splice(indexToRemove, 1);
+              localStorage.setItem(
+                "ArtistLiked",
+                JSON.stringify(arrayHeartArtist)
+              );
+              console.log(`Removed artist id ${data.id} from liked list`);
+            }
+          }
+        });
+      // console.log(data);
     });
 }
 
@@ -401,18 +429,22 @@ function fetchTracklist(trackList) {
     });
 }
 
+//SALVA ARTISTI
+// let follow = document.querySelector(".followperartisti");
+// console.log(follow);
+
 //insersci i dati nella pagina
 function placeData(tracks) {
-  console.log(tracks);
+  // console.log(tracks);
   //array degli album da filtrare
   let artistAlbums = [];
   for (let c = 0; c < tracks.data.length; c++) {
     artistAlbums.push(tracks.data[c].album);
-    console.log(tracks.data[c].album);
+    // console.log(tracks.data[c].album);
   }
   let filteredArr = filterDuplicateArrays(artistAlbums);
   for (let i = 0; i < 5; i++) {
-    console.log(i);
+    // console.log(i);
     //converte i secondi in minutaggio
     let time = tracks.data[i].duration;
     let minutes = Math.floor(time / 60);
@@ -451,17 +483,17 @@ function placeData(tracks) {
     let topSongs = document.querySelectorAll(
       "div.mx-1.text-light.lightBg div.row.m-auto div.col.m-auto a.m-auto.text-decoration-none"
     );
-    console.log(topSongs[0]);
+    // console.log(topSongs[0]);
     let count = 0;
     topSongs.forEach((element) => {
-      console.log(element);
+      // console.log(element);
       element.addEventListener("click", () => {
-        console.log("object");
+        // console.log("object");
         playAudio(tracks.data[count]);
         count++;
       });
     });
-    console.log(tracks.data[i]);
+    // console.log(tracks.data[i]);
     let cutTitle = "";
     if (filteredArr[i].title.length > 20) {
       cutTitle = filteredArr[i].title.slice(0, 20) + "...";
@@ -490,9 +522,9 @@ function placeData(tracks) {
 }
 //set about background
 function about(data) {
-  console.log(data);
+  // console.log(data);
   let aboutDiv = document.querySelector(".about");
-  console.log(aboutDiv);
+  // console.log(aboutDiv);
   aboutDiv.style.backgroundImage = `url(${data.picture_big})`;
 }
 //filtra l'arrai di album per evitare i duplicati
@@ -509,9 +541,9 @@ function filterDuplicateArrays(arrayOfArrays) {
 function GoTo(id) {
   let albumId = id;
   //per controllare
-  console.log("AlbumID:", albumId);
+  // console.log("AlbumID:", albumId);
   const newUrl = `./album.html?id=${albumId}`;
-  console.log("New URL:", newUrl);
+  // console.log("New URL:", newUrl);
   window.location.href = newUrl;
 }
 function playAudio(data) {
@@ -526,7 +558,7 @@ function playAudio(data) {
     </div>
   `;
 
-  console.log("Playing audio:", data);
+  // console.log("Playing audio:", data);
 
   const content = document.querySelector(".content");
   const playBtn = content.querySelector(".play-pause");
